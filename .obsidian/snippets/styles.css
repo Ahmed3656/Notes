@@ -1,0 +1,17 @@
+.math {
+  font-size: 1.5em !important;
+}
+
+.math-block {
+  width: fit-content;
+  padding: 0 1rem;
+}
+
+.markdown-source-view.mod-cm6 .cm-content>.math-block {
+  margin: auto !important;
+
+}
+
+.math-block .edit-block-button {
+  display: none !important;
+}

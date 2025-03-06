@@ -1,0 +1,5 @@
+- C++
+- JavaScript
+	- Binary files show weird icons because text editors try to interpret raw binary data as text, which doesn’t work for most non-text content. It translates binary to text using UTF-8 or ASCII and the binary stored doesn't correspond to normal letters.
+	- **Blob** short for **B**inary **L**arge **OB**jects is a general term used to refer to binary data stored in a file or database. It treats the binary data as a single, opaque "chunk" of bytes without assuming any specific structure or meaning.
+- Database

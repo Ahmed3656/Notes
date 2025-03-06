@@ -1,0 +1,249 @@
+{
+  "main": {
+    "id": "e8859706e48eafd0",
+    "type": "split",
+    "children": [
+      {
+        "id": "6464ce1c1de92e40",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "43e2628e73322988",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Conventions.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Conventions"
+            }
+          },
+          {
+            "id": "340f7bde2ac3269d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Notes Not to Forget.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Notes Not to Forget"
+            }
+          },
+          {
+            "id": "0c2e7f123521e153",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "JS Libraries.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "JS Libraries"
+            }
+          },
+          {
+            "id": "9f9300fc0095a741",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Linux.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Linux"
+            }
+          },
+          {
+            "id": "23637663cb8f2f94",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Quantum.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Quantum"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "338e6d149d5d1ce6",
+    "type": "split",
+    "children": [
+      {
+        "id": "66ad1c6fdb4a7f48",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "962a5085b0f6bf3d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "1cf1a2a579270f8f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "bf0b3438644b4318",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "09b6ae426b6c6c08",
+    "type": "split",
+    "children": [
+      {
+        "id": "a18ac44822e346e7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e83687ddf69b226d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Linux.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Linux"
+            }
+          },
+          {
+            "id": "ec162db887be4ba1",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Linux.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Linux"
+            }
+          },
+          {
+            "id": "f27ef0e82bf67035",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "a44cac530f9e0668",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Linux.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Linux"
+            }
+          },
+          {
+            "id": "a70af83dc8656d67",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "9f9300fc0095a741",
+  "lastOpenFiles": [
+    "Conventions.md",
+    "C++/Convert a string sentence to a vector of words.md",
+    "Notes Not to Forget.md",
+    "C++/Custom priority queue comparator.md",
+    "C++/Convert number to binary string.md",
+    "C++",
+    "Algorithms/Calculate Number of Overflows.md",
+    "Algorithms/Cycle Detection in a Linked List.md",
+    "Algorithms",
+    "Quantum.md",
+    "JS Libraries.md",
+    "Linux.md"
+  ]
+}
