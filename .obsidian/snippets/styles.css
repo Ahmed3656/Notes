@@ -15,3 +15,12 @@
 .math-block .edit-block-button {
   display: none !important;
 }
+
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer {
+  max-width: 100% !important;
+  margin: auto 0 !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-contentContainer * {
+  max-width: 100% !important;
+}

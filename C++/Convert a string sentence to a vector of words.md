@@ -1,7 +1,7 @@
 ```cpp
-	istringstream iss(s);
+	stringstream ss(s);
 	vector<string> v;
 	string x;
-	while (iss >> x)
+	while (ss >> x)
 		v.push_back(x);
 ```
