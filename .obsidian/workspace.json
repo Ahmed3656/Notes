@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "6464ce1c1de92e40",
+        "id": "1e29b604ba989899",
         "type": "tabs",
         "children": [
           {
-            "id": "340f7bde2ac3269d",
+            "id": "d4ecedce286cdf3a",
             "type": "leaf",
             "state": {
               "type": "split-diff-view",
               "state": {
-                "aFile": ".obsidian/workspace.json",
-                "bFile": ".obsidian/workspace.json",
+                "aFile": ".obsidian/snippets/styles.css",
+                "bFile": ".obsidian/snippets/styles.css",
                 "aRef": ""
               },
               "icon": "diff",
-              "title": "Diff: workspace.json"
+              "title": "Diff: styles.css"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "09b6ae426b6c6c08",
@@ -180,8 +179,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "340f7bde2ac3269d",
+  "active": "a70af83dc8656d67",
   "lastOpenFiles": [
+    "Miscellaneous/Docker.md",
+    "JS Libraries.md",
     "Algorithms/1. Problems Patterns.md",
     "Miscellaneous/Linux.md",
     "Quantum.md",
@@ -191,7 +192,6 @@
     "Algorithms/Cycle Detection in a Linked List.md",
     "Algorithms/Calculate Number of Overflows.md",
     "Miscellaneous/SQL Database Structure & Metadata Queries.md",
-    "JS Libraries.md",
     "Algorithms/Search in a Rotated Sorted Array.md",
     "Miscellaneous/Design Patterns & SOLID Principles Summary.md",
     "C++/Convert a string sentence to a vector of words.md",
