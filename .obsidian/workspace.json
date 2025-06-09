@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "1e29b604ba989899",
+        "id": "a3954e2a95dc5cf8",
         "type": "tabs",
         "children": [
           {
-            "id": "d4ecedce286cdf3a",
+            "id": "a7ab07ab8764a807",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": ".obsidian/snippets/styles.css",
-                "bFile": ".obsidian/snippets/styles.css",
-                "aRef": ""
+                "file": "Miscellaneous/Docker.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: styles.css"
+              "icon": "lucide-file",
+              "title": "Docker"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "09b6ae426b6c6c08",
@@ -179,13 +180,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a70af83dc8656d67",
+  "active": "a7ab07ab8764a807",
   "lastOpenFiles": [
     "Miscellaneous/Docker.md",
+    "Quantum.md",
     "JS Libraries.md",
     "Algorithms/1. Problems Patterns.md",
     "Miscellaneous/Linux.md",
-    "Quantum.md",
     "Miscellaneous/Conventions.md",
     "Algorithms/Difference Array.md",
     "Algorithms/Finding the Next Permutation.md",
