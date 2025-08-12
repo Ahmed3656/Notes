@@ -108,6 +108,37 @@ This is where we define the instructions for building a Docker image. Instead of
 Registries are used to store successfully built images so they can be easily pushed, pulled, shared, or deployed without rebuilding every time. Docker Hub is the default public registry, but you can also use private registries like GitHub Container Registry, AWS ECR, or host your own. Registries can store multiple tagged versions of the same image to help you manage updates and rollbacks efficiently.
 
 ---
+
+## Docker Compose
+Docker Compose is a tool that helps you define, configure, and run **multi-container Docker applications** using a single YAML file. Instead of running individual containers one by one with long `docker run` commands, Compose allows you to orchestrate them all by only running `docker-compose up`.
+This is especially useful when your application is made of multiple components like a frontend, backend, database, cache, and reverse proxy. Each component becomes its own **service**, and Compose takes care of how they communicate, their network, volumes, environment variables, and even build steps.
+
+<hr class="hr-light"/>
+
+#### The heart of Compose is the `docker-compose.yml` file, where you define:
+- Which **services** you want to run
+- How to build or pull their **images**
+- What **ports**, **volumes**, and **networks** they need
+- Whether they should restart automatically
+- Their **environment variables** and secrets
+
+There are four main keys:
+- **`version`** (required) —> Specifies which version of the Compose file syntax you’re using. This helps Docker understand how to interpret the structure and features in your file.
+- **`services`** (usually required) —> Defines each container that makes up your app. You describe how to build or pull the image, expose ports, link dependencies, set environment variables, mount volumes, and more. Each service acts like one unit of your architecture (e.g. `web`, `db`, `auth-service`).
+- **`networks`** (optional) —> Tells Docker to create custom virtual networks that your containers will use to communicate. This lets you isolate traffic between services and assign fine-grained control over how they connect.
+- **`volumes`** (optional) —> Instructs Docker to create persistent storage volumes that live outside the container lifecycle. These volumes can be shared across services and reused even after containers are removed or rebuilt.
+
+<hr class="hr-light"/>
+
+#### Services VS Microservices
+
+---
+
+## Docker Swarm
+
+
+---
+
 ## Docker Commands
 
 #### Container & image Commands
