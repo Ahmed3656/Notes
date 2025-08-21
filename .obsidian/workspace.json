@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Data Structures/Square Root Decomposition.md",
+                "file": "Miscellaneous/Design Patterns & SOLID Principles Summary.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Square Root Decomposition"
+              "title": "Design Patterns & SOLID Principles Summary"
             }
           }
         ],
@@ -210,12 +210,12 @@
   },
   "active": "ee43112bc80de815",
   "lastOpenFiles": [
+    "Techniques/Segment Tree.md",
+    "Techniques/Square Root Decomposition.md",
     "Miscellaneous/Docker.md",
     "Miscellaneous/Linux.md",
-    "Data Structures/Square Root Decomposition.md",
-    "Data Structures/Segment Tree.md",
     "Notes Not to Forget.md",
-    "Data Structures",
+    "Techniques",
     "Miscellaneous/Cryptography.md",
     "Miscellaneous/Design Patterns & SOLID Principles Summary.md",
     "Quantum.md",
