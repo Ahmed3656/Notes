@@ -53,18 +53,18 @@
             "id": "1b57dd6bd346fea3",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "Database/03. Indexing.md",
-                "mode": "source",
-                "source": false
+                "aFile": "Algorithms/Calculate Number of Overflows.md",
+                "bFile": "Algorithms/Calculate Number of Overflows.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "03. Indexing"
+              "icon": "diff",
+              "title": "Diff: Calculate Number of Overflows"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -223,37 +223,38 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1c7f976f88b93cf8",
+  "active": "1b57dd6bd346fea3",
   "lastOpenFiles": [
+    "Data Structures/Sparse Table.md",
+    "Data Structures/LSM Tree.md",
+    "Data Structures/B+Tree.md",
+    "Data Structures/B-Tree.md",
+    "Data Structures/Trie.md",
+    "Database/04. Working with Massive Databases.md",
+    "Data Structures",
     "Database/03. Indexing.md",
-    "Database/02. Understanding Database Internals.md",
+    "Miscellaneous/Cryptography.md",
+    "Miscellaneous/Conventions.md",
+    "C++/Custom priority queue comparator.md",
+    "C++/Convert number to binary string.md",
+    "C++/Convert a string sentence to a vector of words.md",
+    "Algorithms/Search in a Rotated Sorted Array.md",
+    "Algorithms/Finding the Next Permutation.md",
+    "Algorithms/Difference Array.md",
+    "Algorithms/Cycle Detection in a Linked List.md",
+    "Algorithms/Calculate Number of Overflows.md",
+    "Algorithms/1. Problems Patterns.md",
     "Miscellaneous/System Design.md",
+    "Database/02. Understanding Database Internals.md",
     "Miscellaneous/The Difference Between Disk Fetching and RAM Access.md",
     "Miscellaneous/Design Patterns & SOLID Principles Summary.md",
     "Database/00. Transaction.md",
     "Database/01. ACID.md",
     "Miscellaneous/Linux.md",
-    "Algorithms/1. Problems Patterns.md",
     "Miscellaneous/Docker.md",
     "Database",
-    "Techniques/Segment Tree.md",
-    "Techniques/Square Root Decomposition.md",
-    "Notes Not to Forget.md",
     "Techniques",
-    "Miscellaneous/Cryptography.md",
-    "Quantum.md",
-    "JS Libraries.md",
-    "Miscellaneous/Conventions.md",
-    "Algorithms/Difference Array.md",
-    "Algorithms/Finding the Next Permutation.md",
-    "Algorithms/Cycle Detection in a Linked List.md",
-    "Algorithms/Calculate Number of Overflows.md",
-    "Miscellaneous/SQL Database Structure & Metadata Queries.md",
-    "Algorithms/Search in a Rotated Sorted Array.md",
-    "C++/Convert a string sentence to a vector of words.md",
     "Miscellaneous",
-    "C++/Custom priority queue comparator.md",
-    "C++/Convert number to binary string.md",
     "C++",
     "Algorithms"
   ]
