@@ -38,20 +38,44 @@
 
 <hr class="hr-light" />
 
+- **Caching:** storing frequently accessed data in-memory or at the edge for faster retrieval.
+	- **Cache-Aside (Lazy Loading):** the application is responsible for loading data into cache when needed. Cache acts as a side storage that the application manages.
+		- Characteristics: lazy loading approach / application control cache / cache miss triggers DB read / risk of "cache miss storms" on popular expired keys
+		- Flow —> check cache for data  ──> cache hit —> return the data
+			└──> cache miss —> query the database —> store the result in the cache —> return the data to the application
+		- **Used for read-heavy applications with unpredictable access patterns.** The most common general-purpose pattern
+	- **Write-Through:** data is written to both cache and database simultaneously. Cache remains consistent with the database at all times.
+		- Characteristics: synchronous writes / strong consistency / higher write latency / cache always up-to-date
+		- Flow —> application writes data —> write to cache first —> write to database —> confirm both writes are successful —> return success to application
+		- **Used for applications that require strong consistency and data durability (e.g., financial systems),** often combined with Cache-Aside for reads.
+	- **Write-Behind (Write-Back):** data is written to cache immediately, but database writes are deferred and happen asynchronously in the background.
+		- Characteristics: asynchronous writes / lower write latency / eventual consistency / risk of data loss if cache fails / can batch database writes for efficiency
+		- Flow —> application writes to cache —> return success immediately —> queue the database write —> background process writes to database —> database eventually consistent
+		- **Used for write-heavy applications where eventual consistency is acceptable (e.g., clickstream tracking, activity logging).**
+	- **Write-Around:** writes bypass the cache and go directly to the database. The cache is only populated on a read request (via a cache-miss).
+		- Characteristics: avoids populating cache with write-only data / reduces cache pollution / combines with Cache-Aside for reads / cache contains only read-accessed data
+		- Flow —> application writes data —> write only to database —> on a subsequent read request —> cache miss occurs —> data is loaded from database into cache via Cache-Aside
+		- **Used for write-heavy workloads where written data is unlikely to be re-read immediately (e.g., logging, telemetry data, bulk uploads).**
+	- **Refresh-Ahead:** cache is proactively refreshed before expiration by predicting which data will be needed and updating it in the background.
+		- Characteristics: proactive cache refresh / predictive loading / minimal cache misses / complex implementation / risk of wasteful refresh if predictions are wrong
+		- Flow —> monitor cache access patterns —> predicts needed data —> refreshes cache before data expires —> serves fresh data on request —> no cache miss experienced
+		- **Used for predictable access patterns with with strict latency requirements (e.g., pre-loading a user's likely feed first thing in the morning).**
+
+<hr class="hr-light" />
+
 **Other Key Concepts**
-- **Caching:** Storing frequently accessed data in-memory or at the edge for faster retrieval.
-- **TCP/IP:** Foundation of all internet communication — reliable, ordered, connection-oriented protocol.
-- **DNS:** Resolves human-readable domain names into IP addresses.
-- **HTTP/HTTPS:** Web communication protocols; HTTPS adds encryption via TLS.
+- **TCP/IP:** foundation of all internet communication — reliable, ordered, connection-oriented protocol.
+- **DNS:** resolves human-readable domain names into IP addresses.
+- **HTTP/HTTPS:** web communication protocols; HTTPS adds encryption via TLS.
 - **REST:** API style using HTTP methods and stateless resources.
-- **GraphQL:** Flexible query-based API allowing clients to request exactly the data they need.
-- **gRPC:** High-performance RPC framework built on HTTP/2, ideal for microservices.
-- **WebSockets:** Enables persistent, bidirectional client-server communication in real time.
+- **GraphQL:** flexible query-based API allowing clients to request exactly the data they need.
+- **gRPC:** high-performance RPC framework built on HTTP/2, ideal for microservices.
+- **WebSockets:** enables persistent, bidirectional client-server communication in real time.
 - **SQL vs. NoSQL:**
-    - **SQL:** Relational, structured schema, ACID compliance
-    - **NoSQL:** Non-relational, highly scalable, supports unstructured or semi-structured data
-- **ACID Properties:** Atomicity, Consistency, Isolation, Durability — core principles for reliable database transactions.
-- **Message Queues:** Systems like **Kafka**, **RabbitMQ**, or **SQS** for asynchronous communication between services, improving scalability and decoupling components.
+    - **SQL:** relational, structured schema, ACID compliance
+    - **NoSQL:** non-relational, highly scalable, supports unstructured or semi-structured data
+- **ACID Properties:** Atomicity, Consistency, Isolation, Durability the core principles for reliable database transactions.
+- **Message Queues:** systems like **Kafka**, **RabbitMQ**, or **SQS** for asynchronous communication between services, improving scalability and decoupling components.
 
 ---
 
