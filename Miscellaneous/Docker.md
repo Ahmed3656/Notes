@@ -76,31 +76,33 @@ Before volumes, developers used bind mounts, where they used to manually link a 
 ---
 
 ## Dockerfile
-This is where we define the instructions for building a Docker image. Instead of running the base image and manually setting everything up, we can automate the build using a Dockerfile and run it with `docker build -t [account-name]/[image]:[tag]`. This approach is much cleaner, more consistent, and easier to maintain.
 
-- FROM [repo]:[tag] (creates a new image) —> Specifies the base image to build upon. To start completely from scratch with no base image, use `FROM scratch`.
-- WORKDIR [directory] (creates a new image) —> Sets the working directory inside the container; creates it if it doesn't exist. Equivalent to `mkdir` then `cd`.
-- COPY [source content] [destination directory] (creates a new image) —> Copies files or directories from the host (from the build context directory) into the container at the specified path.
-- ADD [url] [destination directory] (creates a new image) —> Downloads a file from a remote URL or copies local files (including automatic extraction of compressed archives like `.tar`) into the container. Similar to `COPY` but with extended functionality.
-- SHELL ["path", "-c"] —> Overrides the default shell used to execute commands during the build process, allowing you to specify a custom shell (e.g. switching from `/bin/sh` to `/bin/bash`) for more control or compatibility.
-- RUN [command arg1 arg2 ...](shell mode) **OR** ["command", "arg1", "arg2", ...](executive mode) (creates a new image) —> Executes a command during the image build process (build-time). It's very important to note that any command executed by RUN does not accept input during Dockerfile runtime.
-- ENV [name=value] [name=value] ... (only affects metadata) —> Adds global environment variables to the image. You can add environment variables using `RUN export [name="value"]`, but this only affects the current shell session. The issue arises when running multiple `RUN` commands: each `RUN` creates a new intermediate container, and any variables set using `export` are lost when that temporary container ends. In contrast, `ENV` sets environment variables globally and persistently so they remain intact across layers and containers because they're baked into the image metadata.
-- EXPOSE [port] (only affects metadata) —> Informs Docker that the container will listen on the specified network port at runtime.
-- USER [user] (only affect metadata)  —> Switches the default user from root user to the specified user for any following instructions. Commonly used after creating a new user with `RUN groupadd [group] && useradd -g [group] [user]`, then applying `USER [user]` to improve security and avoid running processes as root.
-- LABEL [key="value"] (only affects metadata)  —> Adds descriptive labels to the image in key-value format. Useful for organizing, filtering, searching, or documenting images with metadata like version, maintainer, or purpose.
-- ENTRYPOINT ["path", "-c"] (only affects metadata) —> Defines the main command to run when a container starts (runtime). Unlike `CMD`, it cannot be overridden by arguments passed in `docker run` unless explicitly done with `--entrypoint`.
-- CMD [command] (only affects metadata) —> Provides default arguments to the `ENTRYPOINT`, or acts as the main command if `ENTRYPOINT` is not set. It can be overridden by arguments passed in `docker run`.
-- ARG [argument]=[value] —> Declares build-time variables used only during the image build process. Unlike `ENV`, `ARG` values are not preserved in the final image and can't be accessed at runtime.
+This is where we define the instructions for building a Docker image. Instead of running the base image and manually setting everything up, we can automate the build using a Dockerfile and run it with `docker build -t <account-name>/<image>:<tag>`. This approach is much cleaner, more consistent, and easier to maintain.
+
+- `FROM <image>[:<tag>]` (creates a new layer) —> Specifies the base image to build upon. To start completely from scratch with no base image, use `FROM scratch`.
+- `WORKDIR <directory>` (creates a new layer) —> Sets the working directory inside the container; creates it if it doesn't exist. Equivalent to `mkdir` then `cd`.
+- `COPY <src> <dest>` (creates a new layer) —> Copies files or directories from the host (from the build context) into the container at the specified path.
+- `ADD <src> <dest>` (creates a new layer) —> Downloads a file from a remote URL or copies local files (including automatic extraction of compressed archives like `.tar`) into the container. Similar to `COPY` but with extended functionality.
+- `SHELL ["<path>", "<arg>", ...]` —> Overrides the default shell used to execute commands during the build process, allowing you to specify a custom shell (e.g. switching from `/bin/sh` to `/bin/bash`) for more control or compatibility.
+- `RUN <command> <arg1> <arg2> ...` (shell form) **OR** `["<executable>", "<arg1>", "<arg2>", ...]` (exec form) (creates a new layer) —> Executes a command during the image build process (build-time). It's very important to note that any command executed by `RUN` does not accept input during Dockerfile runtime.
+- `ENV <name>=<value> [<name>=<value> ...]` (metadata) —> Adds global environment variables to the image. You can add environment variables using `RUN export <name>="<value>"`, but this only affects the current shell session. The issue arises when running multiple `RUN` commands: each `RUN` creates a new intermediate container, and any variables set using `export` are lost when that temporary container ends. In contrast, `ENV` sets environment variables globally and persistently so they remain intact across layers and containers because they're baked into the image metadata.
+- `EXPOSE <port> [<port>/<protocol>...]` (metadata) —> Informs Docker that the container will listen on the specified network port(s) at runtime. The protocol (tcp/udp) is optional and defaults to tcp.
+- `USER <user>[:<group>]` (metadata) —> Switches the default user from root to the specified user for any following instructions. Commonly used after creating a new user with `RUN groupadd <group> && useradd -g <group> <user>`, then applying `USER <user>` to improve security and avoid running processes as root.
+- `LABEL <key>=<value> [<key>=<value> ...]` (metadata) —> Adds descriptive labels to the image in key-value format. Useful for organizing, filtering, searching, or documenting images with metadata like version, maintainer, or purpose.
+- `ENTRYPOINT ["<executable>", "<param>", ...]` (metadata) —> Defines the main command to run when a container starts (runtime). Unlike `CMD`, it is not easily overridden by arguments passed in `docker run` unless explicitly done with `--entrypoint`.
+- `CMD ["<executable>", "<param>", ...]` (metadata) —> Provides default arguments to the `ENTRYPOINT`, or acts as the main command if `ENTRYPOINT` is not set. It can be overridden by arguments passed in `docker run`.
+- `ARG <name>[=<default value>]` —> Declares build-time variables used only during the image build process. Unlike `ENV`, `ARG` values are not preserved in the final image and can't be accessed at runtime. Values can be passed via the `--build-arg <name>=<value>` flag on `docker build`. 
 
 <hr class="hr-light"/>
 
 #### Important Notes
-- If you want to base your image on a specific version of an image you've used before, you can use `FROM [repo]@[digest]` where the digest is the unique SHA256 hash of the image, ensuring you always build from the exact same version regardless of future updates to the tag.
-- The `COPY` command accepts wildcards to match multiple files, e.g. `COPY *.py /app/`.
-- If the filename or path contains spaces, use array syntax like `COPY ["name with spaces.ts", "/app"]`.
-- You can add a `.dockerignore` file to exclude specific files or directories from being copied into the image during the build, keeping the image clean and lightweight.
-- `RUN id` prints information about the current user inside the image, including user ID (UID), group ID (GID), and all associated groups for debugging user permissions during build.
-- `ENTRYPOINT` and `CMD` are basically the same command, `ENTRYPOINT` is considered the command while `CMD` is considered the arguments of `ENTRYPOINT`
+
+- If you want to base your image on a specific version of an image you've used before, you can use `FROM <image>@<digest>` where the digest is the unique SHA256 hash of the image, ensuring you always build from the exact same version regardless of future updates to the tag.    
+- The `COPY` instruction accepts wildcards to match multiple files, e.g., `COPY *.py /app/`.
+- If the filename or path contains spaces, use the exec form (JSON array) syntax like `COPY ["file with spaces.txt", "/app"]`.
+- You can add a `.dockerignore` file to exclude specific files or directories from being copied into the image during the build, keeping the image clean and lightweight.
+- `RUN id` prints information about the current user inside the image, including user ID (UID), group ID (GID), and all associated groups for debugging user permissions during build.
+- `ENTRYPOINT` and `CMD` work together. `ENTRYPOINT` is typically set to the main executable, while `CMD` provides the default arguments for that executable. The full command executed at runtime is `<ENTRYPOINT> <CMD>`.
 
 ---
 
@@ -110,81 +112,191 @@ Registries are used to store successfully built images so they can be easily pus
 ---
 
 ## Docker Compose
-Docker Compose is a tool that helps you define, configure, and run **multi-container Docker applications** using a single YAML file. Instead of running individual containers one by one with long `docker run` commands, Compose allows you to orchestrate them all by only running `docker-compose up`.
-This is especially useful when your application is made of multiple components like a frontend, backend, database, cache, and reverse proxy. Each component becomes its own **service**, and Compose takes care of how they communicate, their network, volumes, environment variables, and even build steps.
+Docker Compose is a tool that helps you define, configure, and run **multi-container Docker applications** using a single YAML file. Instead of running individual containers one by one with long `docker run` commands, Compose allows you to orchestrate them all by only running `docker-compose up`.  
+This is especially useful when your application is made of multiple components like a frontend, backend, database, cache, and reverse proxy. Each component becomes its own **service**, and Compose takes care of how they communicate, their network, volumes, environment variables, and even build steps.
 
 <hr class="hr-light"/>
 
-#### The heart of Compose is the `docker-compose.yml` file, where you define:
-- Which **services** you want to run
-- How to build or pull their **images**
-- What **ports**, **volumes**, and **networks** they need
+#### The heart of Compose is the `docker-compose.yml` file, where you define:
+- Which **services** you want to run
+- How to build or pull their **images**
+- What **ports**, **volumes**, and **networks** they need
 - Whether they should restart automatically
-- Their **environment variables** and secrets
+- Their **environment variables**, **secrets**, and **configs**
+- Their dependencies and startup order
 
 There are four main keys:
-- **`version`** (required) —> Specifies which version of the Compose file syntax you’re using. This helps Docker understand how to interpret the structure and features in your file.
-- **`services`** (usually required) —> Defines each container that makes up your app. You describe how to build or pull the image, expose ports, link dependencies, set environment variables, mount volumes, and more. Each service acts like one unit of your architecture (e.g. `web`, `db`, `auth-service`).
-- **`networks`** (optional) —> Tells Docker to create custom virtual networks that your containers will use to communicate. This lets you isolate traffic between services and assign fine-grained control over how they connect.
-- **`volumes`** (optional) —> Instructs Docker to create persistent storage volumes that live outside the container lifecycle. These volumes can be shared across services and reused even after containers are removed or rebuilt.
+- **`version`** (required) —> Specifies which version of the Compose file syntax you’re using. This helps Docker understand how to interpret the structure and features in your file. (Note: The `version` key is largely obsolete in newer Compose versions that use the `compose.yaml` name and prioritize the `services` top-level key).
+- **`services`** (required) —> Defines each container that makes up your app. You describe how to build or pull the image, expose ports, link dependencies, set environment variables, mount volumes, and more. Each service acts like one unit of your architecture (e.g. `web`, `db`, `auth-service`).
+- **`networks`** (optional) —> Tells Docker to create custom virtual networks that your containers will use to communicate. This lets you isolate traffic between services and assign fine-grained control over how they connect.
+- **`volumes`** (optional) —> Instructs Docker to create persistent storage volumes that live outside the container lifecycle. These volumes can be shared across services and reused even after containers are removed or rebuilt.
 
 <hr class="hr-light"/>
 
+#### Common Service Configuration Keys:
+- **`build`** —> Specifies the path to the Dockerfile directory for building an image instead of pulling a pre-built one.
+- **`image`** —> Defines the image to use for the container (e.g., `nginx:alpine`).
+- **`ports`** —> Maps host ports to container ports (e.g., `"8080:80"`).
+- **`expose`** —> Exposes ports to other services on the same network without publishing them to the host.
+- **`environment`** —> Sets environment variables inside the container (can use a list or a key-value map).
+- **`env_file`** —> Specifies a file to read environment variables from.
+- **`volumes`** —> Mounts host paths or named volumes into the container.
+- **`networks`** —> Attaches the service to specific custom networks.
+- **`depends_on`** —> Defines startup dependencies between services (e.g., the `app` service depends on the `db` service).
+- **`restart`** —> Defines the container's restart policy (e.g., `always`, `unless-stopped`, `on-failure`).
+- **`deploy`** —> Specifies configuration related to deploying the service in Swarm mode (e.g., replicas, update config, resources). This key is ignored when using `docker-compose up`.
+
+<hr class="hr-light" />
+
 #### Services VS Microservices
+
+- **A Service (in Docker Compose context):** refers to a single containerized component of your application defined in the `docker-compose.yml` file. It is a technical unit of orchestration. A "web" service might be an entire monolithic application.
+- **A Microservice:** is an architectural and organizational concept. It is a small, independent, loosely-coupled service that implements a specific business capability (e.g., "user authentication service", "payment processing service").
+- **The Relationship:** A single **microservice** is typically deployed as a Docker Compose **service**. A complete microservices architecture is therefore orchestrated by a `docker-compose.yml` file that defines many **services**, each representing a different **microservice**. Compose simplifies the local development and testing of a multi-**microservice** application by allowing you to manage all its constituent **services** together.
 
 ---
 
 ## Docker Swarm
+Docker Swarm is Docker's native clustering and orchestration tool. It creates a cluster of Docker hosts (called nodes) which act as a single virtual system. Swarm orchestrates services across these nodes, handling deployment, scaling, desired state reconciliation, load balancing, and networking.
 
+**Key Concepts:**
+- **Node:** A single machine (physical or virtual) running Docker that participates in the swarm. A node is either a **manager** or a **worker**.
+- **Manager Node:** Handles cluster management tasks, maintains the cluster state using the embedded **etcd database**, dispatches tasks to worker nodes, and serves the swarm mode HTTP API. **Only manager nodes can execute commands to inspect or modify the cluster state.**
+- **Worker Node:** Receives and executes tasks (containers) dispatched from manager nodes.
+- **Service:** A definition of the tasks to execute on the nodes (e.g., which image to run, how many replicas, published ports). It is the central structure of the swarm system.
+- **Task:** A running container that is part of a service. A service's "replicas" setting defines how many identical tasks should be running.
+
+**etcd database:** etcd is a distributed, reliable key-value store designed for holding critical data that must be available to all members of a distributed cluster. In the Docker world, it is the default and underlying database that powers Docker Swarm, storing and managing the state of the entire cluster (service definitions, network configs, secrets, etc.).
+
+**Converge:** The process by which the swarm manager nodes continuously compare the **actual state** of the running tasks against the **desired state** defined in the service. If they do not match (e.g., a task crashes), the manager takes action to reconcile them by starting new tasks to meet the desired replica count.
+
+**To Initialize the Docker Swarm:** run `docker swarm init --advertise-addr <ip:port> --listen-addr <ip:port>`. This command:
+- Creates the embedded etcd database.
+- Converts the current Docker daemon into the first manager node (the Leader).
+- Generates two unique join tokens (one for workers, one for managers) for security.
+
+**We can have as many manager nodes as we want but the recommended range is 1 to 7 and it must be an odd number (1, 3, 5, 7)** to maintain a healthy quorum for the Raft consensus algorithm, which prevents split-brain scenarios in the etcd database.
+
+**To Add a Node to the Swarm:** On an existing manager, run `docker swarm join-token worker` to get the command to join as a worker or `docker swarm join-token manager` to join as a manager. Copy the provided command and run it on the node you want to add.
+
+**To Check the Nodes in the Swarm:** run `docker node ls`. This command only works on manager nodes.
+
+**To Create a Service:** run `docker service create --name <name> -p <published-port>:<target-port> --replicas <amount> <image>`. This defines the desired state for the service, and the swarm manager will immediately work to **converge** the actual state to match it by scheduling tasks across available nodes.
+
+**To View the Services:** run `docker service ls`
+
+**To Inspect a Service:** run `docker service inspect <service-name>`
+
+**To View the Tasks of a Service:** run `docker service ps <service-name>`
+
+**To Scale a Service:** run `docker service scale <name>=<amount>`. This updates the desired state (the number of replicas), and the swarm will **converge** by starting or stopping tasks to match the new count.
+
+**To Update a Service:** run `docker service update --image <new-image> <service-name>` to change the image, or use flags to update other parameters like environment variables, replicas, or resources.
+
+**To Remove a Service:** run `docker service rm <service-name>`
+
+#### Important Note: Services Require Long-Lived Processes
+
+A fundamental Docker Swarm requirement is that a service must run a **persistent process**. The health of a container is determined by its main process (PID 1). If this process exits, the container is considered failed.
+- **Why Services Fail:** swarm expects a service to be a continuous workload (e.g., a web server, database, API). If the container's command is a short-lived utility, script, or shell that completes its task and terminates, the container stops. Swarm's convergence loop detects this failure and continuously attempts to restart it, creating a **crash loop**.
+- **This is Not Image-Specific:** the issue is not the image's origin (OS or application) but the **command it runs**. An `nginx` image works because its default command launches the Nginx server daemon. A `python` image will fail unless its command is overridden to run a persistent Python application (e.g., `python app.py`).
+- **The Solution:** always ensure the image and command used for a service are designed to run indefinitely. For images meant for one-time tasks, you must override the command to a persistent one (e.g., `sleep infinity`) for testing, but this is not suitable for production services.
+- **Key Takeaway:** swarm orchestrates **services**, not **tasks**. A service is defined by an ongoing process. If your container's natural state is "exited," it is not a service and will not run correctly in Swarm mode.
+
+**GUI for the Swarm Nodes:** you can deploy a visualizer tool as a service within your swarm (e.g., `docker service create --name=visualizer ...`). Once running, you can open `http://localhost:<port>` or the node's IP to see a GUI representation of the nodes and how tasks are distributed.
 
 ---
 
 ## Docker Commands
 
 #### Container & image Commands
-- docker pull [image] —> Download an image from Docker Hub
-- docker create [image] —> Create a new container but do not start it
-- docker start [container] —> Start a stopped container
-- docker run [image] —> Run a container from an image (same as pull then create then start)
-- docker build -t [name] . —> Build an image from a Dockerfile
-- docker tag [image] [repo:tag] —> Tag an image with a custom name
-- docker ps or docker container ls —> List running containers
-- docker ps -a or docker container ls -a —> List all containers including stopped ones
-- docker images —> List downloaded Docker images
-- docker inspect [image] —> View details of the image (in JSON)
-- docker stop [container] —> Gracefully stop a running container
-- docker kill [container] —> Force-stop a container immediately
-- docker restart [container] —> Restart a container
-- docker rm [container] —> Remove a container (delete)
-- docker rmi [image] —> Remove an image
-- docker exec -it [container] bash —> Open shell in a running container
-- docker logs [container] —> View logs of a container
+- `docker pull <image>` —> Download an image from a registry
+- `docker create <image>` —> Create a new container but do not start it
+- `docker start <container>` —> Start a stopped container
+- `docker run <image>` —> Run a container from an image (same as pull then create then start)
+- `docker build -t <name> .` —> Build an image from a Dockerfile
+- `docker tag <image> <repo:tag>` —> Tag an image with a custom name
+- `docker ps` or `docker container ls` —> List running containers
+- `docker ps -a` or `docker container ls -a` —> List all containers including stopped ones
+- `docker images` or `docker image ls` —> List downloaded Docker images
+- `docker inspect <object-name>` —> View detailed low-level information (in JSON) of an image, container, network, or volume.
+- `docker stop <container>` —> Gracefully stop a running container
+- `docker kill <container>` —> Force-stop a container immediately
+- `docker restart <container>` —> Restart a container
+- `docker rm <container>` —> Remove a stopped container (delete)
+- `docker rmi <image>` —> Remove an image
+- `docker exec -it <container> <command>` —> Execute a command in a running container (e.g., `bash`, `sh`)
+- `docker logs <container>` —> View logs of a container
+- `docker logs -f <container>` —> Follow (tail) the logs of a container in real-time
 
 <hr class="hr-light"/>
 
-#### Networking / Ports
-- docker run -p 8080:80 [image] —> Map host port 8080 to container port 80
-- docker network ls —> List all Docker networks
-- docker network inspect [network] —> View details of a specific network
-- docker network create [name] —> Create a custom Docker network
-- docker network disconnect [network] [name]  —> Disconnects host "name" from the network "network"
+#### Networking
+- `docker run -p <host-port>:<container-port> <image>` —> Map host port to container port
+- `docker network ls` —> List all Docker networks
+- `docker network inspect <network>` —> View details of a specific network
+- `docker network create <name>` —> Create a custom Docker network
+- `docker network connect <network> <container>` —> Connect a container to a network
+- `docker network disconnect <network> <container>` —> Disconnect a container from a network
+- `docker network prune` —> Remove all unused networks 
 
 <hr class="hr-light"/>
 
 #### Volumes / Data Management
-- docker volume ls —> List all volumes
-- docker volume create [name] —> Create a new volume
-- docker run -v [volume]:/data [image] —> Mount a volume into a container
-- docker inspect [container] —> Show detailed info about a container
+- `docker volume ls` —> List all volumes
+- `docker volume create <name>` —> Create a new volume
+- `docker run -v <volume-name>:<container-path> <image>` —> Mount a named volume into a container
+- `docker run -v <host-path>:<container-path> <image>` —> Mount a host directory into a container (bind mount)
+- `docker volume inspect <volume-name>` —> Show detailed info about a volume
+- `docker volume prune` —> Remove all unused volumes 
+
+<hr class="hr-light"/>
+<hr class="hr-light"/>
+
+#### Compose Commands
+- `docker-compose up` —> Build, create, start, and attach to containers for all services.
+- `docker-compose up -d` —> Start all services in detached mode.
+- `docker-compose down` —> Stop and remove all containers, networks, and volumes defined in the compose file.
+- `docker-compose ps` —> List the containers for the current compose project.
+- `docker-compose logs [service]` —> View output from the specified service's containers.
+- `docker-compose logs -f [service]` —> Follow the logs for a service.
+- `docker-compose build` —> Build or rebuild images for services defined with a `build` key.
+- `docker-compose pull` —> Pull the latest images for services defined with an `image` key.
+- `docker-compose config` —> Validate and view the compiled compose configuration. 
 
 <hr class="hr-light"/>
 
-#### System Cleanup
-- docker system prune —> Remove all unused data (containers, images, networks, etc.)
-- docker image prune —> Remove unused images
-- docker volume prune —> Remove unused volumes
+#### Swarm Commands
+- `docker swarm init [--advertise-addr <ip>]` —> Initialize a swarm and make the current node a manager.
+- `docker swarm join-token <manager|worker>` —> Display the command and token for joining a new node.
+- `docker swarm leave [--force]` —> Remove the current node from the swarm (use `--force` on a manager).
+- `docker node ls` —> List all nodes in the swarm (manager command).
+- `docker node ps [node-name]` —> List tasks running on a specific node.
+- `docker node promote <node-name>` —> Promote a worker node to a manager.
+- `docker node demote <node-name>` —> Demote a manager node to a worker.
+- `docker node update --availability drain <node-name>` —> Drain a node, moving its tasks to other nodes for maintenance.
+- `docker service create [options] <image>` —> Create a new service.
+- `docker service ls` —> List services in the swarm.
+- `docker service ps <service-name>` —> List the tasks of a service.
+- `docker service inspect <service-name>` —> Display detailed information about a service.
+- `docker service logs <service-name>` —> Fetch logs from tasks in a service.
+- `docker service scale <service-name>=<replicas>` —> Scale a service up or down.
+- `docker service update [options] <service-name>` —> Update a service's configuration (image, args, etc.).
+- `docker service rm <service-name>` —> Remove a service. 
 
 <hr class="hr-light"/>
+
+#### System & Info
+- `docker info` —> Display system-wide information about the Docker installation.
+- `docker version` —> Show the Docker version information.
+- `docker system df` —> Show docker disk usage (images, containers, volumes).
+- `docker system prune` —> Remove all unused data (containers, images, networks, build cache).
+- `docker system prune -a` —> Remove all unused images, not just dangling ones.
+- `docker image prune` —> Remove unused images.
+- `docker container prune` —> Remove all stopped containers.
+- `docker volume prune` —> Remove unused volumes.
+
+---
 
 #### Important Notes
 - Adding -it in the run command allows you to run the container or image in interactive mode, where `-i` stands for interactive (keeps STDIN open so you can type commands), and `-t` allocates a pseudo-TTY (gives you a terminal interface with proper formatting), enabling you to interact directly with the container as if you're inside a shell.
@@ -192,5 +304,3 @@ There are four main keys:
 - You can configure the container's restart policy by adding `--restart` to the `docker run` command, followed by one of the available options: `always` (restarts the container if the main process exits or if the Docker daemon restarts), `unless-stopped`(restarts if the main process is killed but doesn't if Docker daemon restarts), - or `on-failure` (restarts only if the process exits with a non-zero status code or if the Docker daemon restarts). All policies don't restart the container if you manually stop it.
 - Commands executed during the creation or setup of a container are called **build-time commands**, while those executed while the container is running are referred to as **runtime commands**.
 - Docker allows you to pull official images directly, as they are published and maintained by the official organizations. To pull an unofficial image created by an individual developer, you must specify the account name before the image name, e.g., `docker image pull [account-name]/[image-name]`.
-
----
