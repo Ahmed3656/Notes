@@ -170,6 +170,8 @@ Docker Swarm is Docker's native clustering and orchestration tool. It creates a 
 
 **Converge:** The process by which the swarm manager nodes continuously compare the **actual state** of the running tasks against the **desired state** defined in the service. If they do not match (e.g., a task crashes), the manager takes action to reconcile them by starting new tasks to meet the desired replica count.
 
+<hr class="hr-light" />
+
 **To Initialize the Docker Swarm:** run `docker swarm init --advertise-addr <ip:port> --listen-addr <ip:port>`. This command:
 - Creates the embedded etcd database.
 - Converts the current Docker daemon into the first manager node (the Leader).
@@ -195,6 +197,8 @@ Docker Swarm is Docker's native clustering and orchestration tool. It creates a 
 
 **To Remove a Service:** run `docker service rm <service-name>`
 
+<hr class="hr-light" />
+
 #### Important Note: Services Require Long-Lived Processes
 
 A fundamental Docker Swarm requirement is that a service must run a **persistent process**. The health of a container is determined by its main process (PID 1). If this process exits, the container is considered failed.
@@ -204,6 +208,44 @@ A fundamental Docker Swarm requirement is that a service must run a **persisten
 - **Key Takeaway:** swarm orchestrates **services**, not **tasks**. A service is defined by an ongoing process. If your container's natural state is "exited," it is not a service and will not run correctly in Swarm mode.
 
 **GUI for the Swarm Nodes:** you can deploy a visualizer tool as a service within your swarm (e.g., `docker service create --name=visualizer ...`). Once running, you can open `http://localhost:<port>` or the node's IP to see a GUI representation of the nodes and how tasks are distributed.
+
+---
+
+## Docker Stack
+Docker Stack is a Swarm-mode command that deploys and manages a complete application stack, defined in a Compose file, across a cluster of Docker hosts. While `docker-compose` orchestrates multi-container applications on a single host, `docker stack deploy` orchestrates multi-service applications across an entire swarm. It translates your Compose file into Swarm's native objects: services, overlay networks, configs, and secrets.
+
+This is the primary method for deploying production-ready, scalable, and self-healing applications to a Docker Swarm.
+
+<hr class="hr-light"/>
+
+#### The heart of Stack is the `docker-stack.yml` file, where you define:
+- Which **services** you want to run and how to scale them
+- What **images** to use (must be pre-built in a registry)
+- What **ports** to publish through the swarm's routing mesh
+- What **volumes** and **networks** to create as swarm objects
+- Their **environment variables**, **secrets**, and **configs**
+- Their resource constraints, placement preferences, and update strategies 
+
+There are four main keys (inherited from Compose, with Swarm-specific behavior):
+- **`services`** (required) —> Defines each service that makes up your app. In Swarm, a service is a template for tasks (containers) that will be distributed across multiple nodes. The `deploy:` sub-key is crucial here for Swarm-specific configuration.
+- **`networks`** (optional) —> Tells Docker to create **overlay networks** by default. These virtual networks span all nodes in the swarm, enabling seamless communication between containers on different hosts. This key is no longer optional for multi-host communication.
+- **`volumes`** (optional) —> Instructs Docker to create volumes that can be used by services across the swarm. The actual persistence depends on the volume driver used (e.g., `local` for node-specific storage, or cloud drivers for shared storage).
+- **`configs`** & **`secrets`** (optional) —> Define configuration files and sensitive data that will be securely injected into the service's containers at runtime. These are Swarm-native objects that are essential for production configuration management. 
+
+<hr class="hr-light"/>
+
+#### Essential `deploy:` Configuration Keys (Swarm-Specific):
+
+The `deploy:` key is ignored by `docker-compose` but is critical for `docker stack deploy` to define the service's orchestration rules.
+- **`replicas`** —> Defines the number of identical tasks (containers) to run for the service. The swarm will distribute these across available nodes.
+- **`update_config`** —> Configures how the service is updated without downtime (rolling update). 
+    - `parallelism`: Number of containers to update at once.
+    - `delay`: Time to wait between updating batches of containers.
+    - `order`: Update order (`start-first` for zero-downtime).    
+- **`rollback_config`** —> Configures how to automatically revert a failed update.
+- **`restart_policy`** —> Defines if/when to restart failed containers (e.g., `condition: on-failure`).
+- **`placement`** —> Specifies constraints for which nodes can run the service (e.g., `constraints: ['node.role==manager']`).
+- **`resources`** —> Sets limits and reservations for CPU and memory usage to manage node resources effectively.
 
 ---
 
