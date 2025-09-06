@@ -151,7 +151,7 @@ There are four main keys:
 #### Services VS Microservices
 
 - **A Service (in Docker Compose context):** refers to a single containerized component of your application defined in the `docker-compose.yml` file. It is a technical unit of orchestration. A "web" service might be an entire monolithic application.
-- **A Microservice:** is an architectural and organizational concept. It is a small, independent, loosely-coupled service that implements a specific business capability (e.g., "user authentication service", "payment processing service").
+- **A Microservice:** is an architectural and organizational concept. It is a small, independent, loosely-coupled service that implements a specific business capability (e.g., "user authentication service", "payment processing service", etc.).
 - **The Relationship:** A single **microservice** is typically deployed as a Docker Compose **service**. A complete microservices architecture is therefore orchestrated by a `docker-compose.yml` file that defines many **services**, each representing a different **microservice**. Compose simplifies the local development and testing of a multi-**microservice** application by allowing you to manage all its constituent **services** together.
 
 ---
@@ -341,7 +341,7 @@ The `deploy:` key is ignored by `docker-compose` but is critical for `docke
 ---
 
 #### Important Notes
-- Adding -it in the run command allows you to run the container or image in interactive mode, where `-i` stands for interactive (keeps STDIN open so you can type commands), and `-t` allocates a pseudo-TTY (gives you a terminal interface with proper formatting), enabling you to interact directly with the container as if you're inside a shell.
+- Adding -it in the run command allows you to run the container or image in interactive mode, where `-i` stands for interactive (keeps STDIN open so you can type commands), and `-t` allocates a pseudo-TTY (gives you a terminal interface with proper formatting), enabling you to interact directly with the container as if you're inside a shell terminal.
 - Adding -d in the run command runs the container in detached mode, meaning it runs in the background without attaching to your terminal. This allows the container to continue running independently of your session, and Docker will print the container ID so you can manage it later using commands like `docker logs`, `docker stop`, or `docker exec`. Detached mode is ideal for long-running services or daemons.
 - You can configure the container's restart policy by adding `--restart` to the `docker run` command, followed by one of the available options: `always` (restarts the container if the main process exits or if the Docker daemon restarts), `unless-stopped`(restarts if the main process is killed but doesn't if Docker daemon restarts), - or `on-failure` (restarts only if the process exits with a non-zero status code or if the Docker daemon restarts). All policies don't restart the container if you manually stop it.
 - Commands executed during the creation or setup of a container are called **build-time commands**, while those executed while the container is running are referred to as **runtime commands**.

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Miscellaneous/Docker.md",
+                "file": "Cloud Native/Kubernetes (K8s).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Docker"
+              "title": "Kubernetes (K8s)"
             }
           },
           {
@@ -238,8 +238,12 @@
   },
   "active": "a7ab07ab8764a807",
   "lastOpenFiles": [
+    "Cloud Native/Linux.md",
+    "Cloud Native/Docker.md",
+    "Cloud Native/Kubernetes (K8s).md",
+    "Miscellaneous/SQL Database Structure & Metadata Queries.md",
+    "Cloud Native",
     "Database/Hot Cache Last Partitioned Table.md",
-    "Miscellaneous/Docker.md",
     "Database/05. Partitioning.md",
     "Database/03. Indexing.md",
     "Database/04. Working with Massive Databases.md",
@@ -262,9 +266,6 @@
     "Miscellaneous/Cryptography.md",
     "Miscellaneous/Conventions.md",
     "C++/Custom priority queue comparator.md",
-    "C++/Convert number to binary string.md",
-    "C++/Convert a string sentence to a vector of words.md",
-    "Algorithms/Search in a Rotated Sorted Array.md",
     "Database",
     "Techniques",
     "Miscellaneous",
