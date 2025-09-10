@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database/07. Concurrency Control.md",
+                "file": "Database/08. Replication.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07. Concurrency Control"
+              "title": "08. Replication"
             }
           },
           {
@@ -239,12 +239,13 @@
   },
   "active": "68c4ea6e91c7b1be",
   "lastOpenFiles": [
-    "Cloud Native/Kubernetes (K8s).md",
-    "Database/07. Concurrency Control.md",
     "Database/06. Sharding.md",
+    "Database/05. Partitioning.md",
+    "Database/08. Replication.md",
+    "Database/07. Concurrency Control.md",
+    "Cloud Native/Kubernetes (K8s).md",
     "Backend/Protocol Buffers.md",
     "Backend/02.09 gRPC.md",
-    "Database/05. Partitioning.md",
     "Algorithms/1. Problems Patterns.md",
     "Database/Hot Cache Last Partitioned Table.md",
     "Backend",
@@ -266,7 +267,6 @@
     "JS Libraries.md",
     "B+Tree.md",
     "Database/05. B-Tree.md",
-    "Data Structures/LSM Tree.md",
     "Data Structures",
     "Database",
     "Techniques",
