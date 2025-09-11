@@ -63,8 +63,30 @@
 
 <hr class="hr-light" />
 
+- **Load Balancing:** distributing incoming network traffic across multiple servers to ensure no single server is overwhelmed, improving scalability, availability, and fault tolerance.
+	- **Static Load Balancing:** uses predefined, fixed rules to distribute requests without considering the real-time state of servers.
+		- **Round Robin:** it is the simplest approach, it just rotates the requests evenly among the servers in sequence. **Used for homogeneous server clusters with evenly distributed requests.**
+		- **Sticky (Session-Aware) Round Robin:** an extension of Round Robin that tries to send subsequent requests from the same user to the same server. The goal is to improve performance by keeping related data on the same server, so it maintains a **stateful** connection between the client and the server. Uneven load can occur as newly arriving users are assigned randomly, and it can also be problematic if a server goes down since those users lose their session context. **Used when session affinity is required (e.g., apps without centralized session storage).**
+		- **Weighted Round Robin:** allows admins to assign different weights or priorities to different servers, where servers with higher weights will receive a proportionally higher number of requests. The downside is that the weights have to be manually configured, which is less adaptive to real-time changes. **Used when servers have different hardware capacity or performance profiles.**
+		- **Random Selection:** each request is assigned to a random server. Simple, low-overhead, and avoids predictable patterns, but it doesn’t guarantee even distribution. **Used when traffic is light or evenly distributed by chance.**
+		- **IP/URL Hash:** use a hash function to map incoming requests to the backend servers. The hash function often uses the client's IP address or the requested URL as input for determining where to route each request. It can evenly distribute requests if the function is chosen wisely, however, selecting an optimal hash function could be challenging. **Used for cache-heavy systems and when client affinity is required (e.g., CDNs, gaming servers).**
+		- **Consistent Hashing:** a specialized hashing approach that, unlike simple IP/URL hashing, minimizes disruption when servers are added or removed, only a small portion of requests need to be remapped. **Used in distributed caches and databases (e.g., Cassandra, Memcached, CDN routing).**
+		- **Geolocation-Based Routing:** routes users to the server closest to their geographical location to reduce latency. **Used for global applications (CDNs, DNS load balancing).**
+	- **Dynamic Load Balancing:** adapts routing decisions based on the current state of servers (connections, response time, resource usage).
+		- **Least Connections:** sends each new request to the server with the least number of active connections. This adapts well when requests vary in processing time, but it assumes all connections cost about the same (which isn’t always true). **Used for applications with varying session lengths (e.g., chat apps, APIs with uneven request processing times).**
+		-  **Weighted Least Connections:** similar to Least Connections but also considers server capacity (e.g., a server with twice the capacity can handle twice the connections). **Used for heterogeneous server clusters where hardware differs significantly.**
+		- **Least Response Time:** sends incoming requests to the server with the lowest current latency or fastest response time. Latency for each server is continuously measured and factored in. This approach is highly adaptive and reactive, however, it requires constant monitoring which incurs significant overhead and introduces complexity. It also doesn't consider how many existing requests each server already has. **Used for latency-sensitive systems where fast response is critical (e.g., trading platforms, interactive apps).**
+		- **Resource-Based (Load-Aware Scheduling):** requests are routed based on real-time metrics like CPU, memory, or I/O usage of servers. Requires monitoring agents on servers. **Used when workloads are heavy and uneven, ensuring more balanced resource consumption.**
+		- **Least Bandwidth / Least Traffic:** routes to the server currently serving the least amount of data (measured in Mbps or throughput). **Used for streaming, file transfer, or content-heavy systems.**
+		- **Response-Time + Connections Hybrid:** considers both response time and number of connections together (e.g., F5 load balancers). **Used for balancing latency-sensitive systems with uneven load.**
+	- **Health Checks:** a fundamental mechanism where the load balancer proactively monitors the health and availability of servers to prevent routing traffic to failed or unhealthy nodes. This is a critical feature for **fault tolerance**.
+		- **Passive Health Checks (In-band):** the load balancer observes the real-time behavior of server responses (e.g., timeouts, connection failures, HTTP 5xx status codes) to infer their health status. A server generating too many errors is temporarily quarantined.
+		- **Active Health Checks (Out-of-band):** the load balancer periodically sends separate health probe requests (e.g., a TCP SYN packet, an HTTP GET /health) to each server at a configurable interval. A server that fails to respond correctly is marked **down** and removed from the pool until it passes subsequent checks.
+
+<hr class="hr-light" />
+
 **Other Key Concepts**
-- **TCP/IP:** foundation of all internet communication — reliable, ordered, connection-oriented protocol.
+- **TCP/IP:** foundation of all internet communication, it is a reliable, ordered, connection-oriented protocol.
 - **DNS:** resolves human-readable domain names into IP addresses.
 - **HTTP/HTTPS:** web communication protocols; HTTPS adds encryption via TLS.
 - **REST:** API style using HTTP methods and stateless resources.

@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Backend/Protocol Buffers.md",
+                "file": "Miscellaneous/Cryptography.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Protocol Buffers"
+              "title": "Cryptography"
             }
           },
           {
@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -237,14 +237,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "68c4ea6e91c7b1be",
+  "active": "1c7f976f88b93cf8",
   "lastOpenFiles": [
+    "Untitled.md",
+    "Miscellaneous/System Design.md",
+    "Miscellaneous/Cryptography.md",
+    "Backend/Protocol Buffers.md",
+    "Database/08. Replication.md",
     "Database/06. Sharding.md",
     "Database/05. Partitioning.md",
-    "Database/08. Replication.md",
     "Database/07. Concurrency Control.md",
     "Cloud Native/Kubernetes (K8s).md",
-    "Backend/Protocol Buffers.md",
     "Backend/02.09 gRPC.md",
     "Algorithms/1. Problems Patterns.md",
     "Database/Hot Cache Last Partitioned Table.md",
@@ -258,15 +261,12 @@
     "Database/02. Understanding Database Internals.md",
     "Database/00. Transaction.md",
     "Database/01. ACID.md",
-    "Miscellaneous/System Design.md",
     "Data Structures/Sparse Table.md",
     "Data Structures/Trie.md",
     "Data Structures/B-Trees.md",
     "Miscellaneous/Notes Not to Forget.md",
     "Miscellaneous/Quantum.md",
     "JS Libraries.md",
-    "B+Tree.md",
-    "Database/05. B-Tree.md",
     "Data Structures",
     "Database",
     "Techniques",
