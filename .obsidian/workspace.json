@@ -27,26 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database/03. Indexing.md",
+                "file": "Database/10. Cursors.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03. Indexing"
-            }
-          },
-          {
-            "id": "f9915545db0305a4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Data Structures/LSM Tree (Log-Structured Merge Tree).md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "LSM Tree (Log-Structured Merge Tree)"
+              "title": "10. Cursors"
             }
           },
           {
@@ -91,8 +77,7 @@
               "title": "Hot Cache Last Partitioned Table"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -251,22 +236,23 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "68c4ea6e91c7b1be",
+  "active": "a7ab07ab8764a807",
   "lastOpenFiles": [
-    "Data Structures/B-Trees.md",
-    "Database/03. Indexing.md",
+    "Miscellaneous/Cryptography.md",
+    "Database/10. Cursors.md",
     "Data Structures/LSM Tree (Log-Structured Merge Tree).md",
-    "Data Structures/Bloom Filter.md",
-    "Database/05. Partitioning.md",
     "Cloud Native/Kubernetes (K8s).md",
     "Database/09. Database Engines.md",
-    "Database/08. Replication.md",
+    "Database/05. Partitioning.md",
     "Database/06. Sharding.md",
+    "Database/07. Concurrency Control.md",
+    "Database/08. Replication.md",
+    "Database/03. Indexing.md",
+    "Data Structures/B-Trees.md",
+    "Data Structures/Bloom Filter.md",
     "Miscellaneous/System Design.md",
     "Untitled.md",
-    "Miscellaneous/Cryptography.md",
     "Backend/Protocol Buffers.md",
-    "Database/07. Concurrency Control.md",
     "Backend/02.09 gRPC.md",
     "Algorithms/1. Problems Patterns.md",
     "Database/Hot Cache Last Partitioned Table.md",
@@ -280,7 +266,6 @@
     "Database/00. Transaction.md",
     "Database/01. ACID.md",
     "Data Structures/Sparse Table.md",
-    "Data Structures/Trie.md",
     "Data Structures",
     "Database",
     "Techniques",
