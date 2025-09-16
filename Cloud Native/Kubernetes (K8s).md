@@ -48,6 +48,131 @@ This is the higher-level thinking that solves Docker's container-level problems.
 
 ---
 
+## Kubernetes Commands
+
+### Minikube Commands
+- `minikube start` —> Start a local Kubernetes cluster.
+- `minikube status` —> Display the current status of the local cluster.
+- `minikube stop` —> Stop the running local cluster.
+- `minikube delete` —> Delete the local cluster.
+- `minikube dashboard` —> **Open the Kubernetes web dashboard in your default browser**.
+- `minikube dashboard --url` —> Display the dashboard URL without opening a browser.
+- `minikube ip` —> Get the IP address of the running cluster.
+- `minikube ssh` —> Log into or run a command on the minikube environment with SSH.
+- `minikube addons list` —> List available minikube addons (e.g., ingress, metrics-server).
+- `minikube addons enable <addon-name>` —> Enable a specific addon.
+- `eval $(minikube docker-env)` —> Point your local Docker daemon to the one inside Minikube (allows you to use images built with `docker build`).
+
+<hr class="hr-light" />
+
+### Kubectl Commands
+#### Basic Cluster & Context Commands
+- `kubectl cluster-info` —> Display endpoint information about the master and services in the cluster.
+- `kubectl config view` —> Show merged kubeconfig settings or a specified kubeconfig file.
+- `kubectl config current-context` —> Display the current-context.
+- `kubectl config use-context <context-name>` —> Set the current context.
+- `kubectl config get-contexts` —> List all available contexts.
+- `kubectl version` —> Show client and server version information.
+- `kubectl api-resources` —> List all supported API resources on the server.
+- `kubectl api-versions` —> List all supported API versions on the server.
+
+<hr class="hr-light"/>
+
+#### Pod & Container Operations
+- `kubectl get pods` —> List all pods in the current namespace.
+- `kubectl get pods -A` or `kubectl get pods --all-namespaces` —> List all pods in all namespaces.
+- `kubectl describe pod <pod-name>` —> Show detailed information about a specific pod.
+- `kubectl logs <pod-name>` —> Print the logs from a container in a pod.
+- `kubectl logs -f <pod-name>` —> Stream logs from a pod (similar to tail -f).
+- `kubectl exec -it <pod-name> -- <command>` —> Execute a command in a running pod.
+- `kubectl exec -it <pod-name> -- sh` or `-- bash` —> Open an interactive shell to a pod.
+- `kubectl delete pod <pod-name>` —> Delete a specific pod.
+- `kubectl apply -f <file.yaml>` —> Create or update resources from a YAML/JSON file.
+- `kubectl create -f <file.yaml>` —> Create resources from a YAML/JSON file.
+- `kubectl delete -f <file.yaml>` —> Delete resources defined in a YAML/JSON file.
+- `kubectl run <name> --image=<image>` —> Run a particular image in a pod.
+- `kubectl port-forward <pod-name> <host-port>:<pod-port>` —> Forward one or more local ports to a pod.
+
+<hr class="hr-light"/>
+
+#### Deployment & StatefulSet Management
+- `kubectl get deployments` —> List all deployments.
+- `kubectl describe deployment <deployment-name>` —> Show detailed information about a deployment.
+- `kubectl scale deployment <deployment-name> --replicas=<count>` —> Scale a deployment to the specified number of replicas.
+- `kubectl rollout status deployment/<deployment-name>` —> Watch the rollout status of a deployment.
+- `kubectl rollout history deployment/<deployment-name>` —> View the rollout history of a deployment.
+- `kubectl rollout undo deployment/<deployment-name>` —> Rollback to the previous deployment.
+- `kubectl get statefulsets` —> List all StatefulSets.
+- `kubectl describe statefulset <statefulset-name>` —> Show detailed information about a StatefulSet.
+
+<hr class="hr-light"/>
+
+#### Service & Ingress Management
+- `kubectl get services` or `kubectl get svc` —> List all services.
+- `kubectl describe service <service-name>` —> Show detailed information about a service.
+- `kubectl expose deployment <deployment-name> --port=<port> --target-port=<target-port>` —> Expose a deployment as a new service.
+- `kubectl get ingress` —> List all ingress resources.
+- `kubectl describe ingress <ingress-name>` —> Show detailed information about an ingress.
+
+<hr class="hr-light"/>
+
+#### Namespace Operations
+- `kubectl get namespaces` or `kubectl get ns` —> List all namespaces.
+- `kubectl create namespace <namespace-name>` —> Create a new namespace.
+- `kubectl delete namespace <namespace-name>` —> Delete a namespace.
+- `kubectl config set-context --current --namespace=<namespace-name>` —> Set the default namespace for current context.
+
+<hr class="hr-light"/>
+
+#### ConfigMap & Secret Management
+- `kubectl get configmaps` or `kubectl get cm` —> List all ConfigMaps.
+- `kubectl describe configmap <configmap-name>` —> Show detailed information about a ConfigMap.
+- `kubectl create configmap <name> --from-file=<path-to-file>` —> Create a ConfigMap from a file.
+- `kubectl get secrets` —> List all secrets.
+- `kubectl describe secret <secret-name>` —> Show detailed information about a secret.
+
+<hr class="hr-light"/>
+
+#### Node & Cluster Management
+- `kubectl get nodes` —> List all nodes in the cluster.
+- `kubectl describe node <node-name>` —> Show detailed information about a node.
+- `kubectl cordon <node-name>` —> Mark node as unschedulable.
+- `kubectl uncordon <node-name>` —> Mark node as schedulable.
+- `kubectl drain <node-name>` —> Drain node in preparation for maintenance.
+- `kubectl top nodes` —> Display resource usage (CPU/Memory) of nodes.
+- `kubectl top pods` —> Display resource usage (CPU/Memory) of pods.
+
+<hr class="hr-light"/>
+
+#### Debugging & Troubleshooting
+- `kubectl get events` or `kubectl get events -A` —> List recent events in the current/all namespaces.
+- `kubectl get events --sort-by='.lastTimestamp'` —> List events sorted by timestamp.
+- `kubectl get all` —> List all resources in the current namespace.
+- `kubectl explain <resource>` —> Get documentation for a specific resource type.
+- `kubectl auth can-i <verb> <resource>` —> Check if the current user can perform an action.
+
+<hr class="hr-light"/>
+
+#### Advanced Operations
+- `kubectl patch <resource> <name> -p '{"spec":{"<field>":"<value>"}}'` —> Update a resource using a strategic merge patch.
+- `kubectl edit <resource>/<name>` —> Edit a resource directly.
+- `kubectl label <resource> <name> <key>=<value>` —> Add or update a label on a resource.
+- `kubectl annotate <resource> <name> <key>=<value>` —> Add or update an annotation on a resource.
+- `kubectl cp <pod-name>:<path> <local-path>` —> Copy files/folders between a pod and the local system.
+- `kubectl wait --for=condition=ready pod/<pod-name>` —> Wait for a specific condition on a resource.
+
+<hr class="hr-light"/>
+
+#### Resource Management
+- `kubectl get <resource-type>` —> List resources of a specific type (pods, services, deployments, etc.).
+- `kubectl delete <resource-type> <resource-name>` —> Delete a specific resource.
+- `kubectl get <resource-type> -o yaml` —> Get resource definition in YAML format.
+- `kubectl get <resource-type> -o json` —> Get resource definition in JSON format.
+- `kubectl get <resource-type> -o wide` —> Get additional information about resources.
+- `kubectl get <resource-type> --watch` or `-w` —> Watch resources for changes.
+
+---
+
 ## Important Notes
 - **Manager nodes (the control plane) are typically only installed on Linux.**
 - **Kubernetes does not create runtime containers directly.** It uses a container runtime (like `containerd` or `CRI-O`) through the CRI. This is a major difference from Docker Swarm, which managed containers directly.

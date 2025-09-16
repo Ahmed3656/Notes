@@ -68,7 +68,6 @@ Docker network is a virtual network layer managed by Docker that enables contain
 
 ---
 ## Docker Volumes
-
 A persistent storage mechanism managed by Docker that allows containers to store and share data independently from the container lifecycle. Volumes live outside the container filesystem, so data isn't lost when the container is stopped, removed, or rebuilt.
 
 Before volumes, developers used bind mounts, where they used to manually link a host directory into the container. This tightly coupled the container to the host system, caused permission issues, and made it hard to manage or move containers. Volumes solved this by offering portable, isolated, and Docker-managed storage with better performance and consistency.
@@ -76,7 +75,6 @@ Before volumes, developers used bind mounts, where they used to manually link a 
 ---
 
 ## Dockerfile
-
 This is where we define the instructions for building a Docker image. Instead of running the base image and manually setting everything up, we can automate the build using a Dockerfile and run it with `docker build -t <account-name>/<image>:<tag>`. This approach is much cleaner, more consistent, and easier to maintain.
 
 - `FROM <image>[:<tag>]` (creates a new layer) —> Specifies the base image to build upon. To start completely from scratch with no base image, use `FROM scratch`.

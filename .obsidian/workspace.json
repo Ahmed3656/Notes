@@ -22,17 +22,17 @@
             }
           },
           {
-            "id": "68c4ea6e91c7b1be",
+            "id": "4bca00e210b704f1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database/10. Cursors.md",
+                "file": "Database/11. NoSQL Architecture.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "10. Cursors"
+              "title": "11. NoSQL Architecture"
             }
           },
           {
@@ -77,7 +77,8 @@
               "title": "Hot Cache Last Partitioned Table"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -236,17 +237,26 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a7ab07ab8764a807",
+  "active": "4bca00e210b704f1",
   "lastOpenFiles": [
-    "Miscellaneous/Cryptography.md",
-    "Database/10. Cursors.md",
-    "Data Structures/LSM Tree (Log-Structured Merge Tree).md",
+    "Database/08. Replication.md",
+    "Database/11. NoSQL Architecture.md",
+    "Data Structures/Trie.md",
+    "Algorithms/Maximum XOR in Array.md",
     "Cloud Native/Kubernetes (K8s).md",
+    "Algorithms/Finding the Next Permutation.md",
+    "Algorithms/Cycle Detection in a Linked List.md",
+    "Algorithms/Difference Array.md",
+    "Algorithms/Search in a Rotated Sorted Array.md",
+    "Algorithms/Square Root Decomposition.md",
+    "Database/10. Cursors.md",
+    "Cloud Native/Docker.md",
+    "Miscellaneous/Cryptography.md",
+    "Data Structures/LSM Tree (Log-Structured Merge Tree).md",
     "Database/09. Database Engines.md",
     "Database/05. Partitioning.md",
     "Database/06. Sharding.md",
     "Database/07. Concurrency Control.md",
-    "Database/08. Replication.md",
     "Database/03. Indexing.md",
     "Data Structures/B-Trees.md",
     "Data Structures/Bloom Filter.md",
@@ -255,17 +265,8 @@
     "Backend/Protocol Buffers.md",
     "Backend/02.09 gRPC.md",
     "Algorithms/1. Problems Patterns.md",
-    "Database/Hot Cache Last Partitioned Table.md",
     "Backend",
-    "Cloud Native/Linux.md",
-    "Cloud Native/Docker.md",
-    "Miscellaneous/SQL Database Structure & Metadata Queries.md",
     "Cloud Native",
-    "Database/04. Working with Massive Databases.md",
-    "Database/02. Understanding Database Internals.md",
-    "Database/00. Transaction.md",
-    "Database/01. ACID.md",
-    "Data Structures/Sparse Table.md",
     "Data Structures",
     "Database",
     "Techniques",
