@@ -27,7 +27,7 @@
 		- **Multi-Master:** multiple nodes accept writes; used in distributed databases.
 	- Pros: high availability and fault tolerance, in addition to better read scalability.
 	- Cons: potential consistency issues depending on replication strategy.
-- **[CAP Theorem:](../Database/09.%20CAP%20Theorem)**
+- **[CAP Theorem:](../Database/09.%20CAP%20Theorem.md)**
 	In distributed systems, you can only guarantee **two out of three** properties:
 	- **Consistency (C):** all nodes return the same data.
 	- **Availability (A):** system always responds, even if some nodes fail.

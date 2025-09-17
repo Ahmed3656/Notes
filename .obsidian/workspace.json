@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -237,10 +237,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4bca00e210b704f1",
+  "active": "1c7f976f88b93cf8",
   "lastOpenFiles": [
-    "Cloud Native/Kubernetes (K8s).md",
     "Database/12. NoSQL Architecture.md",
+    "Cloud Native/Kubernetes (K8s).md",
     "Data Structures/LSM Tree (Log-Structured Merge Tree).md",
     "Data Structures/B-Trees.md",
     "Database/09. CAP Theorem.md",
