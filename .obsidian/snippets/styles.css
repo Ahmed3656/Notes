@@ -30,3 +30,8 @@
   border-top: 1px solid #333;
   margin: auto !important;
 }
+
+.cm-lang-mermaid {
+  width: fit-content !important;
+  float: right !important;
+}
