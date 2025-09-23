@@ -239,11 +239,12 @@
   },
   "active": "226bfd469c52c1e2",
   "lastOpenFiles": [
+    "images",
     "Database/11. Database Engines.md",
     "Database/02. Understanding Database Internals.md",
     "Data Structures/LSM Tree (Log-Structured Merge Tree).md",
     "Cloud Native/Kubernetes (K8s).md",
-    "hard-disk-structure.png",
+    "images/hard-disk-structure.png",
     "Data Structures/B-Trees.md",
     "Database/03. Indexing.md",
     "Database/07. Concurrency Control.md",
