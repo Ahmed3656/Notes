@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database/02. Understanding Database Internals.md",
+                "file": "Database/12. SQL Databases Architecture.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02. Understanding Database Internals"
+              "title": "12. SQL Databases Architecture"
             }
           },
           {
@@ -239,9 +239,17 @@
   },
   "active": "226bfd469c52c1e2",
   "lastOpenFiles": [
-    "images",
+    "PGSQL.md",
+    "Database/12. SQL Databases Architecture.md",
+    "Database/13. NoSQL Databases Architecture.md",
+    "Database/01. ACID.md",
     "Database/11. Database Engines.md",
+    "images/PGSQL.webp",
+    "Database/15. Database Security.md",
+    "Database/14. NoSQL Cache Architecture (In-Memory Databases).md",
+    "Database/04. Working with Massive Databases.md",
     "Database/02. Understanding Database Internals.md",
+    "images",
     "Data Structures/LSM Tree (Log-Structured Merge Tree).md",
     "Cloud Native/Kubernetes (K8s).md",
     "images/hard-disk-structure.png",
@@ -249,12 +257,8 @@
     "Database/03. Indexing.md",
     "Database/07. Concurrency Control.md",
     "Data Structures/Bloom Filter.md",
-    "Database/01. ACID.md",
-    "Database/13. NoSQL Cache Architecture (In-Memory Databases).md",
-    "Database/04. Working with Massive Databases.md",
     "Database/08. Replication.md",
     "Database/06. Sharding.md",
-    "Database/14. Database Security.md",
     "Backend/2.06 Transport Layer Security (TLS).md",
     "Backend/2.05 Transmission Control Protocol (TCP).md",
     "Cryptography/Shamir Secret Sharing (SSS).md",
@@ -264,9 +268,7 @@
     "Cryptography",
     "Backend/2.07 Hyper Text Transfer Protocol (HTTP).md",
     "Backend/2.09 gRPC.md",
-    "Database/12. NoSQL Architecture.md",
     "Database/Hot Cache Last Partitioned Table.md",
-    "Miscellaneous/System Design.md",
     "Backend",
     "Cloud Native",
     "Data Structures",
