@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database/12. SQL Databases Architecture.md",
+                "file": "Database/00. Transaction.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "12. SQL Databases Architecture"
+              "title": "00. Transaction"
             }
           },
           {
@@ -237,10 +237,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "226bfd469c52c1e2",
+  "active": "a70af83dc8656d67",
   "lastOpenFiles": [
-    "PGSQL.md",
+    "Database/16. Distributed Transactions.md",
+    "Database/00. Transaction.md",
     "Database/12. SQL Databases Architecture.md",
+    "PGSQL.md",
     "Database/13. NoSQL Databases Architecture.md",
     "Database/01. ACID.md",
     "Database/11. Database Engines.md",
@@ -267,8 +269,6 @@
     "Cryptography/Diffie-Hellman.md",
     "Cryptography",
     "Backend/2.07 Hyper Text Transfer Protocol (HTTP).md",
-    "Backend/2.09 gRPC.md",
-    "Database/Hot Cache Last Partitioned Table.md",
     "Backend",
     "Cloud Native",
     "Data Structures",
