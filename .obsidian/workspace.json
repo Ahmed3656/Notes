@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Data Structures/Hash Table.md",
+                "file": "Database/17. Nulls in Databases.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Hash Table"
+              "title": "17. Nulls in Databases"
             }
           },
           {
@@ -84,11 +84,25 @@
               "type": "markdown",
               "state": {
                 "file": "Football Talent Discovery Platform - System Design.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
               "title": "Football Talent Discovery Platform - System Design"
+            }
+          },
+          {
+            "id": "32f265594d33858d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Football Talent Discovery Platform - Idea.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Football Talent Discovery Platform - Idea"
             }
           }
         ],
@@ -253,15 +267,17 @@
   },
   "active": "1c7f976f88b93cf8",
   "lastOpenFiles": [
-    "Database/14. NoSQL Cache Architecture (In-Memory Databases).md",
     "Data Structures/Hash Table.md",
+    "Database/17. Nulls in Databases.md",
+    "Football Talent Discovery Platform - Idea.md",
+    "Football Talent Discovery Platform - System Design.md",
+    "Database/14. NoSQL Cache Architecture (In-Memory Databases).md",
     "Data Structures/Bloom Filter.md",
     "Algorithms/Hashing.md",
     "Algorithms/Finding the Next Permutation.md",
     "Algorithms/Maximum XOR in Array.md",
     "Algorithms/Calculate Number of Overflows.md",
     "Database/06. Sharding.md",
-    "Football Talent Discovery Platform - System Design.md",
     "Data Structures/LSM Tree (Log-Structured Merge Tree).md",
     "Database/05. Partitioning.md",
     "Database/00. Transaction.md",
@@ -280,8 +296,6 @@
     "images/hard-disk-structure.png",
     "Data Structures/B-Trees.md",
     "Database/03. Indexing.md",
-    "Database/07. Concurrency Control.md",
-    "Database/08. Replication.md",
     "Cryptography",
     "Backend",
     "Cloud Native",
