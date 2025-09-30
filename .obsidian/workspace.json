@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database/18. Write Amplification in Database Systems.md",
+                "file": "Database/07. Concurrency Control.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "18. Write Amplification in Database Systems"
+              "title": "07. Concurrency Control"
             }
           },
           {
@@ -253,8 +253,12 @@
   },
   "active": "1c7f976f88b93cf8",
   "lastOpenFiles": [
-    "Database/08. Replication.md",
+    "Database/PostgreSQL Locking Deep Dive.md",
+    "Database/07. Concurrency Control.md",
+    "Cloud Native/Kubernetes (K8s).md",
+    "Database/01. ACID.md",
     "Database/18. Write Amplification in Database Systems.md",
+    "Database/08. Replication.md",
     "Data Structures/LSM Tree (Log-Structured Merge Tree).md",
     "Database/13. NoSQL Databases Architecture.md",
     "Database/12. SQL Databases Architecture.md",
@@ -262,14 +266,11 @@
     "Data Structures/B-Trees.md",
     "Database/03. Indexing.md",
     "Database/02. Understanding Database Internals.md",
-    "Database/01. ACID.md",
-    "Database/07. Concurrency Control.md",
     "Database/09. CAP Theorem.md",
     "Database/15. Database Security.md",
     "Database/04. Working with Massive Databases.md",
     "Database/05. Partitioning.md",
     "Database/06. Sharding.md",
-    "Database/PostgreSQL Locking Deep Dive.md",
     "Database/17. Nulls in Databases.md",
     "Data Structures/Skip List.md",
     "Data Structures/Hash Table.md",
@@ -278,7 +279,6 @@
     "Database/14. NoSQL Cache Architecture (In-Memory Databases).md",
     "Data Structures/Bloom Filter.md",
     "Algorithms/Hashing.md",
-    "Algorithms/Finding the Next Permutation.md",
     "images/PGSQL.webp",
     "images",
     "images/hard-disk-structure.png",
