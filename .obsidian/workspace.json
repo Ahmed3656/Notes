@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database/07. Concurrency Control.md",
+                "file": "Database/03. Indexing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07. Concurrency Control"
+              "title": "03. Indexing"
             }
           },
           {
@@ -253,10 +253,12 @@
   },
   "active": "1c7f976f88b93cf8",
   "lastOpenFiles": [
-    "Database/PostgreSQL Locking Deep Dive.md",
     "Database/07. Concurrency Control.md",
-    "Cloud Native/Kubernetes (K8s).md",
     "Database/01. ACID.md",
+    "Database/03. Indexing.md",
+    "Database/15. Database Security.md",
+    "Database/PostgreSQL Locking Deep Dive.md",
+    "Cloud Native/Kubernetes (K8s).md",
     "Database/18. Write Amplification in Database Systems.md",
     "Database/08. Replication.md",
     "Data Structures/LSM Tree (Log-Structured Merge Tree).md",
@@ -264,10 +266,8 @@
     "Database/12. SQL Databases Architecture.md",
     "Database/11. Database Engines.md",
     "Data Structures/B-Trees.md",
-    "Database/03. Indexing.md",
     "Database/02. Understanding Database Internals.md",
     "Database/09. CAP Theorem.md",
-    "Database/15. Database Security.md",
     "Database/04. Working with Massive Databases.md",
     "Database/05. Partitioning.md",
     "Database/06. Sharding.md",
