@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database/03. Indexing.md",
+                "file": "1. Problems Patterns.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03. Indexing"
+              "title": "1. Problems Patterns"
             }
           },
           {
@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Football Talent Discovery Platform - System Design.md",
+                "file": "Miscellaneous/Notes Not to Forget.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Football Talent Discovery Platform - System Design"
+              "title": "Notes Not to Forget"
             }
           },
           {
@@ -251,22 +251,25 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1c7f976f88b93cf8",
+  "active": "962a5085b0f6bf3d",
   "lastOpenFiles": [
-    "Database/07. Concurrency Control.md",
-    "Database/01. ACID.md",
+    "Backend/2.06 Transport Layer Security (TLS).md",
     "Database/03. Indexing.md",
+    "Database/02. Understanding Database Internals.md",
+    "Database/01. ACID.md",
+    "Miscellaneous/Notes Not to Forget.md",
+    "Database/13. NoSQL Databases Architecture.md",
+    "Football Talent Discovery Platform - System Design.md",
+    "Database/07. Concurrency Control.md",
     "Database/15. Database Security.md",
     "Database/PostgreSQL Locking Deep Dive.md",
     "Cloud Native/Kubernetes (K8s).md",
     "Database/18. Write Amplification in Database Systems.md",
     "Database/08. Replication.md",
     "Data Structures/LSM Tree (Log-Structured Merge Tree).md",
-    "Database/13. NoSQL Databases Architecture.md",
     "Database/12. SQL Databases Architecture.md",
     "Database/11. Database Engines.md",
     "Data Structures/B-Trees.md",
-    "Database/02. Understanding Database Internals.md",
     "Database/09. CAP Theorem.md",
     "Database/04. Working with Massive Databases.md",
     "Database/05. Partitioning.md",
@@ -275,10 +278,7 @@
     "Data Structures/Skip List.md",
     "Data Structures/Hash Table.md",
     "Football Talent Discovery Platform - Idea.md",
-    "Football Talent Discovery Platform - System Design.md",
     "Database/14. NoSQL Cache Architecture (In-Memory Databases).md",
-    "Data Structures/Bloom Filter.md",
-    "Algorithms/Hashing.md",
     "images/PGSQL.webp",
     "images",
     "images/hard-disk-structure.png",
